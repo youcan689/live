@@ -15,7 +15,8 @@
                     @endif
 
                     You are logged in!
-                    {{--  上面說過這裡會添加一個按鈕  --}}  <a href="{{ route('blog.index') }}" class="btn btn-lg btn-block btn-primary">點擊這裡查看我的部落格</a>
+                    {{--  上面說過這裡會添加一個按鈕  --}}
+                    {{-- <a href="{{ route('blog.index') }}" class="btn btn-lg btn-block btn-primary">點擊這裡查看我的部落格</a> --}}
                 </div>
             </div>
         </div>
