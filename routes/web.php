@@ -9,10 +9,14 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-//沒有登入不可以進入
-Route::group(['middleware' => ['web', 'auth']], function () {
-    Route::get('create', 'ArticleController@create');
+Route::middleware(['auth'])->group(function () {
+    Route::get('article', 'ArticleController@index');
+    Route::get('create', 'ArticleController@create')->name('creatArticle');
+    Route::post('article/store', 'ArticleController@store');
+    Route::get('article/edit/{id}', 'ArticleController@edit')->name('editArticle');
+    Route::put('article/update/{id}', 'ArticleController@update');
+    Route::resource('index', 'ArticleController');
 });
