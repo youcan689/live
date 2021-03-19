@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,8 +11,9 @@
  */
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::middleware(['auth'])->group(function () {
-    Route::get('article', 'ArticleController@index');
+    Route::get('article', 'ArticleController@index')->name('index');
     Route::get('create', 'ArticleController@create')->name('creatArticle');
-    Route::post('store', 'ArticleController@store'); Route::post('article/store', 'ArticleController@store');
+    Route::post('store', 'ArticleController@store');
 });
