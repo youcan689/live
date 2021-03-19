@@ -15,8 +15,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::get('article', 'ArticleController@index');
     Route::get('create', 'ArticleController@create')->name('creatArticle');
-    Route::post('article/store', 'ArticleController@store');
-    Route::get('article/edit/{id}', 'ArticleController@edit')->name('editArticle');
-    Route::put('article/update/{id}', 'ArticleController@update');
-    Route::resource('index', 'ArticleController');
+    Route::post('store', 'ArticleController@store'); Route::post('article/store', 'ArticleController@store');
 });
