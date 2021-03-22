@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Article;
@@ -9,7 +8,8 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        return view('articles')->withArticles(Article::all());
+        $articles = request()->has('myArticle') ? auth()->user()->articles : Article::all();
+        return view('articles', ['articles' => $articles]);
     }
 
     public function create()
