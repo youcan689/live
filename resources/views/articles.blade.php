@@ -21,7 +21,11 @@
                     <td class="border border-black">{{ $article->content }}</td>
                     <td class="border border-black">
                         <a href="">查看</a>
-                        <a href="">編輯</a>
+                        @if (Auth::user()->id == $article->user_id)
+                            <a href="{{ route('editArticle', $article->id) }}">編輯</a>
+                        @else
+                            <span style="color:gray">編輯</span>
+                        @endif
                         <a href="">刪除</a>
                     </td>
                 </tr>
