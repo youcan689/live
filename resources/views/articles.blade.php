@@ -15,6 +15,9 @@
             <th class="border border-black">動作</th>
         </thead>
         <tbody>
+            <td class="border border-black">標題</td>
+            <td class="border border-black">內容</td>
+            <td class="border border-black">動作</td>
             @foreach ($articles as $article)
                 <tr class="border border-black">
                     <td class="border border-black">{{ $article->title }}</td>
@@ -26,10 +29,17 @@
                         @else
                             <span style="color:gray">編輯</span>
                         @endif
-                        <a href="">刪除</a>
+                        <form action="article/delete/{{ $article->id }}" method="POST">
+                            @if (Auth::user()->id == $article->user_id)
+                                @csrf
+                                @method('delete')
+                                <input type="submit" value="刪除">
+                            @else
+                                <span style="color:gray">刪除</span>
+                            @endif
+                        </form>
                     </td>
                 </tr>
             @endforeach
-        </tbody>
     </table>
 @endsection
