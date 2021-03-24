@@ -46,4 +46,10 @@ class ArticleController extends Controller
         $article->delete();
         return redirect('article');
     }
+
+    public function read($id)
+    {
+        $article = Article::find($id);
+        return view('read', ['article' => $article]);
+    }
 }

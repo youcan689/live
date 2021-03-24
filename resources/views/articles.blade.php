@@ -23,7 +23,7 @@
                     <td class="border border-black">{{ $article->title }}</td>
                     <td class="border border-black">{{ $article->content }}</td>
                     <td class="border border-black">
-                        <a href="">查看</a>
+                        <a href="read/{{ $article->id }}">查看</a>
                         @if (Auth::user()->id == $article->user_id)
                             <a href="{{ route('editArticle', $article->id) }}">編輯</a>
                         @else
