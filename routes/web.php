@@ -19,5 +19,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('article/edit/{id}', 'ArticleController@edit')->name('editArticle');
     Route::put('article/edit/{id}', 'ArticleController@update');
     Route::delete('article/delete/{id}', 'ArticleController@remove');
-    Route::get('read/{id}', 'ArticleController@read');
+    Route::get('read/{id}', 'ArticleController@read')->name('showArticle');
+    Route::post('comment', 'CommentController@store');
 });

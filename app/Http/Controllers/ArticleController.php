@@ -50,6 +50,10 @@ class ArticleController extends Controller
     public function read($id)
     {
         $article = Article::find($id);
-        return view('read', ['article' => $article]);
+        return view('read', [
+            'id' => request()->input('article_id'),
+            'comments' => $article->comments,
+            'article' => $article,
+        ]);
     }
 }
