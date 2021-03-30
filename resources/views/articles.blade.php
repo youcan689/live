@@ -20,7 +20,7 @@
         @else
             <span style="color:gray">編輯</span>
         @endif
-        <form action="article/delete/{{ $article->id }}" method="POST">
+        <form action="{{ route('deleteArticle', $article->id) }}" method="POST">
             @if (Auth::user()->id == $article->user_id)
                 @csrf
                 @method('delete')

@@ -26,6 +26,16 @@
             <div class="time">{{ $comment->created_at }}</div>
             <hr>
         </div>
+        <form action="{{ route('deleteComment', $comment->id) }}" method="POST">
+            @if (Auth::user()->id == $comment->user_id)
+                @csrf
+                @method('delete')
+                <input name="article_id" type="hidden" value="{{ $article->id }}">
+                <input type="submit" value="刪除">
+            @else
+                <span style="color:gray">刪除</span>
+            @endif
+        </form>
     @empty
         <p>來當第一個留言的吧！</p>
     @endforelse
