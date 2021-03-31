@@ -18,7 +18,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('store', 'ArticleController@store');
     Route::get('article/edit/{id}', 'ArticleController@edit')->name('editArticle');
     Route::put('article/edit/{id}', 'ArticleController@update');
-    Route::delete('article/delete/{id}', 'ArticleController@remove');
+    Route::delete('article/{id}', 'ArticleController@remove')->name('deleteArticle');
     Route::get('read/{id}', 'ArticleController@read')->name('showArticle');
     Route::post('comment', 'CommentController@store');
+    Route::delete('comment/{id}', 'CommentController@remove')->name('deleteComment');
 });
