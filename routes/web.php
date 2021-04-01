@@ -22,4 +22,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('read/{id}', 'ArticleController@read')->name('showArticle');
     Route::post('comment', 'CommentController@store');
     Route::delete('comment/{id}', 'CommentController@remove')->name('deleteComment');
+    Route::get('tag/{id}', 'TagController@index')->name('tagArticle');
 });

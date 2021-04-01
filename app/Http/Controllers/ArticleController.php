@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -9,7 +10,8 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = request()->has('myArticle') ? auth()->user()->articles : Article::all();
-        return view('articles', ['articles' => $articles]);
+        $tags = Tag::all();
+        return view('articles', ['articles' => $articles, 'tags' => $tags]);
     }
 
     public function create()
