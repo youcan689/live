@@ -3,6 +3,10 @@
     <form action="create">
         <input type="submit" value="新增文章" />
     </form>
+    <h1>文章分類</h1>
+    @foreach ($tags as $tag)
+        <a href="{{ route('tagArticle', ['id' => $tag->id]) }}"> {{ $tag->title }} <a />
+    @endforeach
     @if (request()->has('myArticle'))
         <a href="{{ route('index') }}">文章列表</a>
     @else
