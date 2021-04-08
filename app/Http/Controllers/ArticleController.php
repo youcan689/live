@@ -9,8 +9,13 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = request()->has('myArticle') ? auth()->user()->articles : Article::all();
+        $keyWord = request()->input('keyWord');
+        $query = request()->input('myArticle') ? auth()->user()->articles() : Article::query();
         $tags = Tag::all();
+        if (request()->has('keyWord')) {
+            $query->where('title', 'like', '%' . $keyWord . '%');
+        }
+        $articles = $query->get();
         return view('articles', ['articles' => $articles, 'tags' => $tags]);
     }
 
