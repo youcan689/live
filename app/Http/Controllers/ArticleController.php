@@ -15,7 +15,7 @@ class ArticleController extends Controller
         if (request()->has('keyWord')) {
             $query->where('title', 'like', '%' . $keyWord . '%');
         }
-        $articles = $query->get();
+        $articles = $query->orderby('id', 'desc')->paginate(3);
         return view('articles', ['articles' => $articles, 'tags' => $tags]);
     }
 

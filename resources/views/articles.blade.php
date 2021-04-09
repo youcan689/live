@@ -43,4 +43,5 @@
     @empty
         <h1>無此標題的文章</h1>
     @endforelse
+    {{ $articles->links() }}
 @endsection
