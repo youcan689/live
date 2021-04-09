@@ -28,6 +28,10 @@ class ArticleController extends Controller
     {
         $data = $request->all();
         $user = auth()->user();
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'content' => 'required|min:10',
+        ]);
         $article = $user->articles()->create($request->only(['title', 'content']));
         return redirect('article');
     }

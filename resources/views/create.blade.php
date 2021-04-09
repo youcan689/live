@@ -8,9 +8,18 @@
 
 <body>
     <form action="store" method="POST">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div>
             <span>title</span>
-            <input name="title">
+            <input name="title" value="{{ old('title') }}">
         </div>
         <div>
             <span>content</span>
