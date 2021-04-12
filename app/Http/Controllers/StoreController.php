@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
 use App\User;
 
 class StoreController extends Controller
@@ -26,11 +25,18 @@ class StoreController extends Controller
         // dd(Cake::find(6));
         // dd(Cake::first()->store); //所以取締一筆會沒資料 十一   那取id
 
-        $article = new Article(['title' => '為你自己學框架', 'content' => '累積是王道']);
+        // $article = new Article(['title' => '為你自己學框架', 'content' => '累積是王道']);
         // User::first()->articles()->save($article);   以為這個會是id 1號~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        User::find(7)->articles()->save($article);
-        dd(Article::all());
+        // User::find(7)->articles()->save($article);
+
+        // User::find(7)->articles()->create(['title' => '為你自己學框架', 'content' => '累積是王道'],
+        //     ['title' => '為你自己學框架2', 'content' => '累積是王道2']
+
+        // );
+        dd(user::find([1, 2, 3, 7]));
+
+        // dd(Article::all());
     }
 
     //
